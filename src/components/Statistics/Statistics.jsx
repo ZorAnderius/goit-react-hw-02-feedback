@@ -1,4 +1,5 @@
 import statCSS from './Statistics.module.css';
+import propTypes from 'prop-types';
 
 export const Statistics = ({
   good,
@@ -8,7 +9,7 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    <>
+    <div className={statCSS.stat_container}>
       <div className={statCSS.text_box}>
         <div className={statCSS.text_box_elem}>Good:</div>
         <div className={statCSS.text_box_elem}>{good}</div>
@@ -29,6 +30,14 @@ export const Statistics = ({
         <div className={statCSS.text_box_elem}>Positive feedback:</div>
         <div className={statCSS.text_box_elem}>{positivePercentage}%</div>
       </div>
-    </>
+    </div>
   );
+};
+
+Statistics.propTypes = {
+  good: propTypes.number.isRequired,
+  neutral: propTypes.number.isRequired,
+  bad: propTypes.number.isRequired,
+  total: propTypes.number.isRequired,
+  positivePercentage: propTypes.number.isRequired,
 };

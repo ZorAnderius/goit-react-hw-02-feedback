@@ -5,6 +5,8 @@ import { Section } from './Section/Section';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
 
+import appCSS from './App.module.css';
+
 const shortid = require('shortid');
 
 export class App extends Component {
@@ -48,14 +50,22 @@ export class App extends Component {
     const positiveFeedback = this.#countPositiveFeedbackPercentage();
 
     return (
-      <>
-        <Section title={'Please leave feedback'} styles={'header-title'}>
+      <div className={appCSS.main_container}>
+        <Section
+          title={'Please leave feedback'}
+          title_style={'header-title'}
+          section_style={'feedback-section-container'}
+        >
           <FeedbackOptions
             options={btnData}
             onLeaveFeedback={this.onChooseFeedbackBtn}
           />
         </Section>
-        <Section title={'Statistics'} styles={'statistics-title'}>
+        <Section
+          title={'Statistics'}
+          title_style={'statistics-title'}
+          section_style={'stat-section-container'}
+        >
           {totalFeedback ? (
             <Statistics
               good={good}
@@ -68,7 +78,7 @@ export class App extends Component {
             <Notification message="There is no feedback" />
           )}
         </Section>
-      </>
+      </div>
     );
   }
 }
